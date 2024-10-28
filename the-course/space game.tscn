@@ -21,7 +21,7 @@ position = Vector2(173, -14)
 position = Vector2(-102, 90)
 
 [node name="Sprite2D" type="Sprite2D" parent="." node_paths=PackedStringArray("player")]
-position = Vector2(286, 85)
+position = Vector2(167, 54)
 texture = ExtResource("2_21rqu")
 script = ExtResource("3_x41wf")
 player = NodePath("../Marker2D/player")
