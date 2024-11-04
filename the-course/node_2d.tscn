@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dv04vulhdaob3"]
+
+[ext_resource type="Texture2D" uid="uid://dnku55dcgmtb2" path="res://icon.svg" id="1_bu8y5"]
+[ext_resource type="Texture2D" uid="uid://c844yfbd26ea8" path="res://sprites/bug.png" id="2_s0a55"]
+[ext_resource type="Script" path="res://enemyb.gd" id="3_0juxb"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="player" type="Sprite2D" parent="."]
+position = Vector2(152, 155)
+texture = ExtResource("1_bu8y5")
+
+[node name="bug" type="Sprite2D" parent="player"]
+position = Vector2(432, 151)
+texture = ExtResource("2_s0a55")
+script = ExtResource("3_0juxb")
