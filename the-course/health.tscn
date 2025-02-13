@@ -1,3 +1,13 @@
-[gd_scene format=3 uid="uid://bwp1vexjhgvdt"]
+[gd_scene load_steps=3 format=3 uid="uid://bwp1vexjhgvdt"]
+
+[ext_resource type="Texture2D" uid="uid://15c04io7qy6t" path="res://Health.png" id="1_bydfv"]
+[ext_resource type="Script" uid="uid://x7nybtcb5sm5" path="res://healthpowerup.gd" id="2_7e838"]
 
 [node name="health" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1005, 566)
+scale = Vector2(-9.85159, 9.32828)
+texture = ExtResource("1_bydfv")
+script = ExtResource("2_7e838")
