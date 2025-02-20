@@ -24,3 +24,16 @@ func _ready():
  		var x = i
  		var y = sin(deg2rad(i)) * 50 # Sine wave amplitude
  		tween.tween_property(self, "position", Vector2(x, y + position.y), 0.1)
+
+ tween = create_tween()
+	tween.set_loops(0)
+
+	# Move in a square pattern
+	tween.tween_property(self, "position", position + Vector2(200, 0), 1.0)
+	tween.tween_property(self, "rotation", rotation + PI / 2, 1.0)  # Rotate 90 degrees
+	tween.tween_property(self, "position", position + Vector2(0, 200), 1.0)
+	tween.tween_property(self, "rotation", rotation + PI / 2, 1.0)  # Rotate 90 degrees
+	tween.tween_property(self, "position", position + Vector2(-200, 0), 1.0)
+	tween.tween_property(self, "rotation", rotation + PI / 2, 1.0)  # Rotate 90 degrees
+	tween.tween_property(self, "position", position + Vector2(0, -200), 1.0)
+	tween.tween_property(self, "rotation", rotation + PI / 2, 1.0)  # Rotate 90 degrees
