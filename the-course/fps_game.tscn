@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c21etl5a76lf3"]
+[gd_scene load_steps=12 format=3 uid="uid://c21etl5a76lf3"]
 
 [ext_resource type="Script" uid="uid://b22y2qrky8pnp" path="res://fpscharacter.gd" id="1_cykxj"]
 
@@ -26,6 +26,12 @@ size = Vector2(100, 100)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jkgwa"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cykxj"]
+albedo_color = Color(0.713726, 1, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_o6d5r"]
+material = SubResource("StandardMaterial3D_cykxj")
+
 [sub_resource type="BoxMesh" id="BoxMesh_cykxj"]
 
 [node name="fps_game" type="Node3D"]
@@ -49,10 +55,15 @@ shape = SubResource("WorldBoundaryShape3D_cykxj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.213677, 0)
 script = ExtResource("1_cykxj")
 
+[node name="Camera3D" type="Camera3D" parent="player"]
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="player"]
 shape = SubResource("CapsuleShape3D_jkgwa")
+debug_color = Color(0.913725, 0, 0.545098, 1)
 
-[node name="Camera3D" type="Camera3D" parent="player"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.618843, 0)
+mesh = SubResource("CapsuleMesh_o6d5r")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.313908, -0.0657476, -2.31254)
