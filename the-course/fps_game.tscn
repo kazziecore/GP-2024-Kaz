@@ -1,7 +1,59 @@
-[gd_scene format=3 uid="uid://c21etl5a76lf3"]
+[gd_scene load_steps=10 format=3 uid="uid://c21etl5a76lf3"]
+
+[ext_resource type="Script" uid="uid://b22y2qrky8pnp" path="res://fpscharacter.gd" id="1_cykxj"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cykxj"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_o6d5r"]
+sky_material = SubResource("ProceduralSkyMaterial_cykxj")
+
+[sub_resource type="Environment" id="Environment_jkgwa"]
+background_mode = 2
+sky = SubResource("Sky_o6d5r")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o6d5r"]
+albedo_color = Color(1, 0.52549, 1, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_tvcn8"]
+material = SubResource("StandardMaterial3D_o6d5r")
+size = Vector2(100, 100)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_cykxj"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jkgwa"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_cykxj"]
 
 [node name="fps_game" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jkgwa")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("PlaneMesh_tvcn8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_cykxj")
+
+[node name="player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.213677, 0)
+script = ExtResource("1_cykxj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="player"]
+shape = SubResource("CapsuleShape3D_jkgwa")
+
+[node name="Camera3D" type="Camera3D" parent="player"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.313908, -0.0657476, -2.31254)
+mesh = SubResource("BoxMesh_cykxj")
